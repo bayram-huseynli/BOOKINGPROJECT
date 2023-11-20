@@ -1,5 +1,6 @@
 package com.example.msrelations.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -29,7 +30,7 @@ public class User {
     String email;
 
     String phoneNumber;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @Builder.Default
     List<Booking> bookingList=new ArrayList<>();

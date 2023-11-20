@@ -8,5 +8,9 @@ spring:
   jpa:
     hibernate.ddl-auto: update
     generate-ddl: true
-    show-sql: false
+    show-sql: true
     open-in-view: false
+  security:
+    user:
+      name: bayram
+      password: bayram123

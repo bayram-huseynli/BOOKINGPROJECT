@@ -1,7 +1,5 @@
 package com.example.msrelations.controller;
 
-
-import com.example.msrelations.domain.Booking;
 import com.example.msrelations.dto.request.BookingRequest;
 import com.example.msrelations.dto.response.BookingResponse;
 import com.example.msrelations.service.BookingService;
@@ -19,12 +17,12 @@ public class BookingController {
 
    private final BookingService bookingService;
 
-   @GetMapping
+    @GetMapping("/booking/v1/{id}")
     public ResponseEntity<BookingResponse> findById(@PathVariable Long id){
        return new ResponseEntity<>(bookingService.findById(id), HttpStatus.OK);
    }
 
-   @GetMapping
+    @GetMapping("/booking/v1")
     public ResponseEntity<List<BookingResponse>> findAll(){
        return new ResponseEntity<>(bookingService.findAll(),HttpStatus.OK);
    }
