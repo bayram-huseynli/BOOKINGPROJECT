@@ -34,22 +34,15 @@ public class UserRegistrationServiceImpl implements UserRegistrationService{
         String text = "Hello user,Ton confirm your account, please click here :"+
                 "http://localhost:2223/v1/registration/confirm-account?token=" +confirmationToken.getConfirmationToken();
 
-        mailSender.sendEmail(user.getUserEmail(),subject,text);
-        System.out.println("Confirmation Token:"+ confirmationToken.generateConfirmationToken());
+//        mailSender.sendEmail(user.getUserEmail(),subject,text);
+//        System.out.println("Confirmation Token:"+ confirmationToken.generateConfirmationToken());
         return ResponseEntity.ok("vERIFY EMAIL BY THE LINK SENT TO YOUR EMAIL ADDRESS");
 
     }
-    public ResponseEntity<?> confirmEmail(String confirmationToken){
-        ConfirmationToken token=tokenRepository.findByConfiramationToken(confirmationToken);
 
-        if(token!=null){
-            Registration user=userRegistrationRepository.findByEmailIgnoreCase(token.getUserEntity().getUserEmail());
-            user.setEnabled(true);
-            userRegistrationRepository.save(user);
-            return ResponseEntity.ok("Email verified successfully");
-        }
-
-
-
+    @Override
+    public ResponseEntity<?> confirmEmail(String confirmationToken) {
+        return null;
     }
+
 }
